@@ -1,5 +1,4 @@
 from tkinter import filedialog
-import functools
 
 def memorise(function_param: str) -> str:
 
