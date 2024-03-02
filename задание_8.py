@@ -1,4 +1,4 @@
-import itertools
+import itertools, math
 
 def task_1():
     k = 0
@@ -42,7 +42,35 @@ def task_3():
 
     print(k)
 
+def task_4():
+    d = []
+    g = "ae"
+    for i in itertools.product("abcdef", repeat = 6):
+        s = "".join(i)
+        if s[0] not in g and s[-1] not in g:
+            d.append(s)
+
+    print(f"{len(list(set(d)))}")
+
+def task_5():
+    word = "джаваскрипт"
+    g = "аи"
+    k = 0 
+    for i in set(itertools.permutations(word, r = 11)):
+        s = "".join(i)
+        d = []
+        for j in range(len(s)):
+            if s[j] in g:
+                d.append(j + 1)
+
+        if sum(d) == 11:
+            k += 1
+
+    print(f"{k}")
+
 if __name__ == f"__main__":
     task_1()
     task_2()
     task_3()
+    task_4()
+    task_5()
