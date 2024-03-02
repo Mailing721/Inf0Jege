@@ -153,7 +153,103 @@ def task_11921():
     print(amount, max_price)
     """
 
+def task_6096():
+    a = sorted([int(x) for x in open(askopenfilename()).readlines()[1:]])[::-1]
+    d = [a[0]]
+    c = a[0]
+    for i in a:
+        if c - i >= 3:
+            d.append(i)
+            c = i
+
+    print(min(d), len(d))
+
+def task_6031():
+    a = sorted([int(x) for x in open(askopenfilename()).readlines()[1:]])[::-1]
+    d = [a[0]]
+    c = a[0]
+    for i in a:
+        if c - i >= 6:
+            d.append(i)
+            c = i
+
+    print(len(d), min(d))
+
+def task_5228():
+    a = sorted([int(x) for x in open(askopenfilename()).readlines()[1:]])[::-1]
+    d = [a[0]]
+    c = a[0]
+    for i in a:
+        if c - i >= 8:
+            d.append(i)
+            c = i
+
+    print(len(d), min(d))
+
+def task_5066():
+    a = sorted([int(x) for x in open(askopenfilename()).readlines()[1:]])[::-1]
+    d = [a[0]]
+    c = a[0]
+    for i in a:
+        if c - i >= 7:
+            d.append(i)
+            c = i
+
+    print(min(d), len(d))
+
+def task_4965():
+    with open(askopenfilename()) as file:
+        n, m = map(int, file.readline().split())
+        a = [[int(y) for y in line.split()] for line in file]
+        a.sort()
+        exp_max = 0
+        exp_total = 0
+        exp_left = 0
+        inexp_max = 0
+        inexp_total = 0
+        inexp_left = 0
+        sales = 0
+        left = 0
+        last = 0
+        for i in range(n):
+            if i == 0 or a[i][0] == a[i - 1][0]:
+                last = a[i][0]
+                if a[i][1] == 0:
+                    left += 1
+                
+                else:
+                    sales += 1
+            
+            if i == n - 1 or i != 0 and a[i][0] != a[i - 1][0]:
+                if last > m:
+                    if sales > exp_max:
+                        exp_max = sales
+                        exp_total = sales * last
+                        exp_left = left
+                
+                else:
+                    if sales > inexp_max:
+                        inexp_max = sales
+                        inexp_total = sales * last
+                        inexp_left = left
+                
+                if a[i][1] == 0:
+                    left = 1
+                    sales = 0
+                
+                else:
+                    left = 0
+                    sales = 1
+        
+    
+    print(exp_total + inexp_total, exp_left + inexp_left)
+
 if __name__ == f"__main__":
-    task_12256()
-    task_12113()
-    task_11921()
+    #task_12256()
+    #task_12113()
+    #task_11921()
+    #task_6096()
+    task_6031()
+    task_5228()
+    task_5066()
+    task_4965()
