@@ -31,7 +31,20 @@ def task_11243():
             if s%38==0 and (f([y,x], 39) ** 0.5) == int(f([y,x], 39) ** 0.5):
                 print(f([y, x], 39))
 
+def task_12246():
+    def f(x, n = 10):
+        s = ""
+        while x > 0:
+            s = str(x % n) + s
+            x = x // n
+
+        return s
+    
+    s=2*729**333+2*243**334-81**335+2*27**336-2*9**337-338
+    print(len(f(s))-f(s).count('0'))
+
 if __name__ == f"__main__":
     task_13243()
     task_12243()
     task_11243()
+    task_12246()
